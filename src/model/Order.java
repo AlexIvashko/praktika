@@ -32,7 +32,7 @@ public class Order implements Serializable, IModel, IdbModel {
 	private Date date_of_unsettlement;
 		
 	@OneToOne
-	@JoinColumn(name="room_number")
+	@JoinColumn(name="Room_number")
 	private Room room;
 
 	public Order() {
@@ -46,8 +46,6 @@ public class Order implements Serializable, IModel, IdbModel {
 	public void setDate_of_settlement(Date date_of_settlement) {
 		this.date_of_settlement = date_of_settlement;
 	}
-
-
 
 	public Room getRoom() {
 		return this.room;
@@ -65,9 +63,11 @@ public class Order implements Serializable, IModel, IdbModel {
 	@Override
 	public Object[] getTableRowData() {
 		SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
+		
 		String s1 = myFormat.format(date_of_settlement);
 		String s2 = myFormat.format(date_of_unsettlement);
-		return new Object[]{ID_Order,this.room,s1,s2};
+		if(this.room==null)System.out.println("Null room");
+		return new Object[]{ID_Order,this.room.getNumber(),s1,s2};
 
 	}
 

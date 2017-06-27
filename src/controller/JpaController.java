@@ -138,7 +138,7 @@ public class JpaController implements IController {
 		int i = 0;
 		for (Room r : list) {
 			arr[i][0] = Integer.toString(r.getID_Room());
-			arr[i][1] = r.getNumber();
+			arr[i][1] = Integer.toString(r.getNumber());
 			arr[i][2] = r.getType();
 			arr[i][3] = r.getCount();
 			arr[i][4] = r.getReserved();
@@ -161,7 +161,7 @@ public class JpaController implements IController {
 		int i = 0;
 		for (Room r : list) {
 			arr[i][0] = Integer.toString(r.getID_Room());
-			arr[i][1] = r.getNumber();
+			arr[i][1] = Integer.toString(r.getNumber());
 			arr[i][2] = r.getType();
 			arr[i][3] = r.getCount();
 			arr[i][4] = r.getReserved();

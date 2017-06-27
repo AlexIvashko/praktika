@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>RoomList</title>
 <style type="text/css">
-	select{text-align:center;width:40%;height:80%;}
+	select{text-align:center;width:100%;height:80%;}
 	div{text-align:center;width:30%;height:98%;}
 	iframe{position:absolute; left:30%; top:0%; height:98%; width:68%; border:0;}
 </style>

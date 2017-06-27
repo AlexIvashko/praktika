@@ -2,6 +2,7 @@ package webview;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -58,7 +59,7 @@ public class OperateTable extends HttpServlet {
     		if (obj instanceof Room) {
     			
 				String num = request.getParameter("roomNumber");
-				((Room) obj).setNumber(num);
+				((Room) obj).setNumber(Integer.parseInt(num));
 				String type = request.getParameter("roomType");
 				((Room) obj).setType(type);
 				String size = request.getParameter("roomSize");
@@ -69,7 +70,7 @@ public class OperateTable extends HttpServlet {
 				((Room) obj).setInhabited(inhabited);
 				
 				if(operation.equals("edit")){
-					int roomId = Integer.parseInt(request.getParameter("roomId"));
+					int roomId = Integer.parseInt(request.getParameter("roomID"));
 					obj.setObjectId(roomId);
 					controller.edit(roomId, obj);
 				}
@@ -95,9 +96,12 @@ public class OperateTable extends HttpServlet {
 			int roomId = Integer.parseInt(request.getParameter("orderRoom"));
 			Room room = (Room) findObject(roomId, controller,"Room");
 			((Order) obj).setRoom(room);
-			Date dateSettlement = Date.valueOf(request.getParameter("orderDateofSettlement"));
+			SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
+			String s1 = request.getParameter("orderDateofSettlement");
+			String s2 = request.getParameter("orderDateofUnsettlement");
+			Date dateSettlement = Date.valueOf(myFormat.format(s1));
 			((Order) obj).setDate_of_settlement(dateSettlement);
-			Date dateUnsettlement = Date.valueOf(request.getParameter("orderDateofUnsettlement"));
+			Date dateUnsettlement = Date.valueOf(s2);
 			((Order) obj).setDate_of_unsettlement(dateUnsettlement);
 			if (operation.equals("edit")) {
 				//Для оновлення потрібен Id

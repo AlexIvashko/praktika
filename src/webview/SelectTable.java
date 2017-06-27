@@ -16,23 +16,7 @@ import controller.JpaController;
  */
 @WebServlet("/SelectTable")
 public class SelectTable extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-	/*private static JpaController controller ;
-	public static String className;
-	
-	public static JpaController getController() {
-		if(controller==null)
-			controller = new JpaController();
-		return controller;
-	}
-	
-	public static TableModel getTableModel() {
-		return getController().getModel(className);
-	}
-
-	*/
-	
+	private static final long serialVersionUID = 1L;	
     /**
      * @see HttpServlet#HttpServlet()
      */

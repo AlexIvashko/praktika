@@ -56,6 +56,9 @@ String roomId = (String)request.getAttribute("Room");
 		<tr>
 			<td>Дата поселення</td><td><input type="date"  name="orderDate" required></td>
 		</tr>
+			<tr>
+			<td>Дата виселення</td><td><input type="date"  name="orderDateofUnsettlement"></td>
+		</tr>
 		</table><br>
 		<input type="submit" value="Передати">
 		<input type="button" value="Очистити" onclick=clear_form()>

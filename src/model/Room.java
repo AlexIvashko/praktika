@@ -15,11 +15,12 @@ public class Room implements Serializable, IModel, IdbModel {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name="ID_room")
 	private int ID_Room;
 	
-	@Lob
+	
 	@Column(name="Number")
-	private String roomNumber;
+	private int roomNumber;
 	
 	@Lob
 	private String type;
@@ -34,7 +35,9 @@ public class Room implements Serializable, IModel, IdbModel {
 	@Lob
 	private String inhabited;
 	
-
+	@OneToOne(mappedBy = "room")
+	private Order order;
+	
 	public Room() {
 	}
 
@@ -54,11 +57,11 @@ public class Room implements Serializable, IModel, IdbModel {
 		this.inhabited = inhabited;
 	}
 
-	public String getNumber() {
+	public int getNumber() {
 		return this.roomNumber;
 	}
 
-	public void setNumber(String number) {
+	public void setNumber(int number) {
 		this.roomNumber = number;
 	}
 
@@ -85,8 +88,7 @@ public class Room implements Serializable, IModel, IdbModel {
 
 	@Override
 	public Object[] getTableRowData() {
-		return new Object[]{ID_Room,roomNumber,type,
-				count,reserved,inhabited};
+		return new Object[]{ID_Room,roomNumber,type,count,reserved,inhabited};
 	}
 
 	@Override
@@ -168,11 +170,11 @@ public class Room implements Serializable, IModel, IdbModel {
 		ID_Room = iD_Room;
 	}
 
-	public String getRoomNumber() {
+	public int getRoomNumber() {
 		return roomNumber;
 	}
 
-	public void setRoomNumber(String roomNumber) {
+	public void setRoomNumber(int roomNumber) {
 		this.roomNumber = roomNumber;
 	}
 
